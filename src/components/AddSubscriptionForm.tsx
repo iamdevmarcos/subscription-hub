@@ -1,48 +1,52 @@
-"use client";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Subscription } from "@/models/Subscription";
 
-const AddSubscriptionForm = () => {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [renewalDate, setRenewalDate] = useState("");
+const AddSubscriptionForm: React.FC = () => {
+  const [subscription, setSubscription] = useState<Subscription>({
+    id: 0,
+    name: "",
+    price: 0,
+    renewalDate: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setSubscription((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Subscription Added:", { name, price, renewalDate });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-sm font-medium">Name</label>
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium">Price</label>
-        <input
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium">Renewal Date</label>
-        <input
-          value={renewalDate}
-          onChange={(e) => setRenewalDate(e.target.value)}
-          className="w-full p-2 border rounded"
-        />
-      </div>
-      <button
-        type="submit"
-        className="px-4 py-2 bg-blue-500 text-white rounded"
-      >
-        Add Subscription
-      </button>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="name"
+        value={subscription.name}
+        onChange={handleChange}
+        placeholder="Subscription Name"
+        required
+      />
+      <input
+        type="number"
+        name="price"
+        value={subscription.price}
+        onChange={handleChange}
+        placeholder="Price"
+        required
+      />
+      <input
+        type="date"
+        name="renewalDate"
+        value={subscription.renewalDate}
+        onChange={handleChange}
+        required
+      />
+      <button type="submit">Add Subscription</button>
     </form>
   );
 };
