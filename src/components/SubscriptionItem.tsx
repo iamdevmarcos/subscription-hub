@@ -1,9 +1,5 @@
-type Subscription = {
-  id: number;
-  name: string;
-  price: number;
-  renewalDate: string;
-};
+import React from "react";
+import { Subscription } from "@/models/Subscription";
 
 type SubscriptionItemProps = {
   subscription: Subscription;

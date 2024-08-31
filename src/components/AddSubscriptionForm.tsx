@@ -1,25 +1,10 @@
-import React, { useState } from "react";
-import { Subscription } from "@/models/Subscription";
+"use client";
 
-const AddSubscriptionForm: React.FC = () => {
-  const [subscription, setSubscription] = useState<Subscription>({
-    id: 0,
-    name: "",
-    price: 0,
-    renewalDate: "",
-  });
+import { useSubscriptionActions } from "@/hooks/useSubscriptionActions";
+import React from "react";
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setSubscription((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-  };
+const AddSubscriptionForm = () => {
+  const { subscription, handleChange, handleSubmit } = useSubscriptionActions();
 
   return (
     <form onSubmit={handleSubmit}>

@@ -2,13 +2,8 @@ import SubscriptionList from "@/components/SubscriptionList";
 import Link from "next/link";
 
 const HomePage = () => {
-  const subscriptions = [
-    { id: 1, name: "Netflix", price: 19.99, renewalDate: "2024-09-01" },
-    { id: 2, name: "Spotify", price: 9.99, renewalDate: "2024-09-05" },
-  ];
-
   return (
-    <div className="container mx-auto p-12">
+    <div className="container mx-auto p-4 py-24">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">My Subscriptions</h1>
         <Link
@@ -20,7 +15,7 @@ const HomePage = () => {
       </div>
 
       <hr className="border-t border-gray-300 my-4" />
-      <SubscriptionList subscriptions={subscriptions} />
+      <SubscriptionList />
     </div>
   );
 };

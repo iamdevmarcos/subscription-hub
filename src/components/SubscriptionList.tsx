@@ -1,19 +1,19 @@
+"use client";
+
+import React from "react";
 import SubscriptionItem from "./SubscriptionItem";
+import { useSubscriptionActions } from "@/hooks/useSubscriptionActions";
 
-type Subscription = {
-  id: number;
-  name: string;
-  price: number;
-  renewalDate: string;
-};
+const SubscriptionList = () => {
+  const { subscriptions } = useSubscriptionActions();
 
-type SubscriptionListProps = {
-  subscriptions: Subscription[];
-};
+  if (!subscriptions.length)
+    return (
+      <p className="text-black text-center my-8">No subscriptions found...</p>
+    );
 
-const SubscriptionList = ({ subscriptions }: SubscriptionListProps) => {
   return (
-    <ul className="space-y-4">
+    <ul>
       {subscriptions.map((subscription) => (
         <SubscriptionItem key={subscription.id} subscription={subscription} />
       ))}
