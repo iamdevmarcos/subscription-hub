@@ -13,7 +13,7 @@ const SubscriptionList = () => {
     );
 
   return (
-    <ul>
+    <ul className="flex flex-col gap-4">
       {subscriptions.map((subscription) => (
         <SubscriptionItem key={subscription.id} subscription={subscription} />
       ))}

@@ -8,7 +8,7 @@ const HomePage = () => {
         <h1 className="text-2xl font-bold">My Subscriptions</h1>
         <Link
           href="/add-subscription"
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="px-4 py-2 bg-black text-white border border-transparent rounded hover:bg-white hover:text-black hover:border-black"
         >
           Add New Subscription
         </Link>
