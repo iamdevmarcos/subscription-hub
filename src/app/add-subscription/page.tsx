@@ -1,4 +1,4 @@
-import AddSubscriptionForm from "@/components/AddSubscriptionForm";
+import AddSubscriptionFormContainer from "@/components/AddSubscription/AddSubscriptionContainer";
 import Link from "next/link";
 
 const AddSubscriptionPage = () => {
@@ -15,7 +15,7 @@ const AddSubscriptionPage = () => {
       </div>
 
       <hr className="border-t border-gray-300" />
-      <AddSubscriptionForm />
+      <AddSubscriptionFormContainer />
     </div>
   );
 };
