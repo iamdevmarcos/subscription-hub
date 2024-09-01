@@ -1,7 +1,7 @@
 import { Subscription } from "@/models/Subscription";
 import React from "react";
 
-type AddSubscriptionFormPresentationProps = {
+export type AddSubscriptionFormPresentationProps = {
   subscription: Subscription;
   onNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onPriceChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
