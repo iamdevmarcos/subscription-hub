@@ -1,0 +1,43 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "next/babel",
+          {
+            "transform-runtime": {
+              "useESModules": false
+            }
+          }
+        ]
+      ]
+    },
+    "production": {
+      "presets": [
+        [
+          "next/babel",
+          {
+            "transform-runtime": {
+              "useESModules": false
+            }
+          }
+        ]
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ],
+        "@babel/preset-react",
+        "@babel/preset-typescript"
+      ],
+      "plugins": ["dynamic-import-node"]
+    }
+  }
+}
