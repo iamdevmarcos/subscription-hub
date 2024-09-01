@@ -1,8 +1,14 @@
 "use client";
 
-import React from "react";
-import SubscriptionItem from "./SubscriptionItem";
+import React, { Suspense } from "react";
 import { useSubscriptionActions } from "@/hooks/useSubscriptionActions";
+import dynamic from "next/dynamic";
+
+const SubscriptionItem = dynamic(
+  /* webpackChunkName: 'SubscriptionItem' */
+  () => import("./SubscriptionItem"),
+  { suspense: true, ssr: false }
+);
 
 const SubscriptionList = () => {
   const { subscriptions } = useSubscriptionActions();
@@ -15,7 +21,12 @@ const SubscriptionList = () => {
   return (
     <ul className="flex flex-col gap-4">
       {subscriptions.map((subscription) => (
-        <SubscriptionItem key={subscription.id} subscription={subscription} />
+        <Suspense
+          key={subscription.id}
+          fallback={<p>loading SubscriptionItem...</p>}
+        >
+          <SubscriptionItem subscription={subscription} />
+        </Suspense>
       ))}
     </ul>
   );
